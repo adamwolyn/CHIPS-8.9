@@ -32,6 +32,7 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+  And I should see "Star Wars" before "Alien"
   
 Scenario: add a movie and delete it
   Given I am on the RottenPotatoes home page 
@@ -47,3 +48,4 @@ Scenario: add a movie and delete it
   When I follow "Delete"
   Then I should be on the RottenPotatoes home page 
   And I should see "Movie 'Die Hard' deleted."
+  
