@@ -32,3 +32,18 @@ Scenario: can't find similar movies if we don't know director (sad path)
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+  
+Scenario: add a movie and delete it
+  Given I am on the RottenPotatoes home page 
+  And I follow "Add new movie"
+  Then I should be on the new movie page
+  When I fill in "Title" with "Die Hard"
+  And I select "R" from "Rating"
+  And I press "Save Changes"
+  Then I should be on the RottenPotatoes home page 
+  And I should see "Die Hard was successfully created"
+  When I follow "More about Die Hard"
+  Then I should be on the details page for "Die Hard"
+  When I follow "Delete"
+  Then I should be on the RottenPotatoes home page 
+  And I should see "Movie 'Die Hard' deleted."
